@@ -12,20 +12,21 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
-  AnimationController? controller;
+  late AnimationController controller;
+ late Animation animation;
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 1),
-      upperBound: 100,
     );
-    controller!.forward();
-    controller!.addListener(() {
+    animation = CurvedAnimation(parent: controller, curve: Curves.bounceInOut);
+    controller.forward();
+    controller.addListener(() {
       setState(() {});
-      print(controller!.value);
+      print(animation.value);
     });
   }
 
@@ -46,13 +47,12 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   // ignore: sized_box_for_whitespace
                   child: Container(
                     child: Image.asset('images/logo.png'),
-                    height: 60.0,
+                    height: animation.value * 100,
                   ),
                 ),
-                Text(
-                  //' vadSanvad',
-                  '${controller!.value.toInt()}%',
-                  style: const TextStyle(
+                const Text(
+                  ' vadSanvad',
+                  style: TextStyle(
                     fontSize: 45.0,
                     fontWeight: FontWeight.w900,
                   ),

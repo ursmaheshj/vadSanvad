@@ -13,7 +13,7 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
- late Animation animation;
+  late Animation animation;
 
   @override
   void initState() {
@@ -24,10 +24,23 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     );
     animation = CurvedAnimation(parent: controller, curve: Curves.bounceInOut);
     controller.forward();
+    animation.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        controller.reverse(from: 1.0);
+      } else if (status == AnimationStatus.dismissed) {
+        controller.forward();
+      }
+    });
     controller.addListener(() {
       setState(() {});
       print(animation.value);
     });
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override

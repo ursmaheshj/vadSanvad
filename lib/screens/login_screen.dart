@@ -19,10 +19,13 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            // ignore: sized_box_for_whitespace
-            Container(
-              height: 100.0,
-              child: Image.asset('images/logo.png'),
+            Hero(
+              tag: 'logo',
+              // ignore: sized_box_for_whitespace
+              child: Container(
+                height: 100.0,
+                child: Image.asset('images/logo.png'),
+              ),
             ),
             const SizedBox(
               height: 48.0,

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "888430449991",
+    "project_id": "vadsanvad",
+    "storage_bucket": "vadsanvad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888430449991:android:75c74d9f4c6aad557b2862",
+        "android_client_info": {
+          "package_name": "com.mj.vadsanvad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888430449991-r87gij8r5untl71ssrkjbqkqcpel15cr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh4X63b0HUZ2n2R0vl9c-l2x8MsY7sbr8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888430449991-r87gij8r5untl71ssrkjbqkqcpel15cr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

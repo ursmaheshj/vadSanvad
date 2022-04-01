@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:vadsanvad/components/rounded_buttons.dart';
 import 'package:vadsanvad/screens/login_screen.dart';
 import 'package:vadsanvad/screens/registration_screen.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static String id = 'welcome_screen';
@@ -20,10 +22,10 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     super.initState();
     controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 5),
+      duration: const Duration(seconds: 1),
     );
-    animation =
-        ColorTween(begin: Colors.red, end: Colors.blue).animate(controller);
+    animation = ColorTween(begin: Colors.blueGrey, end: Colors.white)
+        .animate(controller);
     controller.forward();
     controller.addListener(() {
       setState(() {});
@@ -53,61 +55,63 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   tag: 'logo',
                   // ignore: sized_box_for_whitespace
                   child: Container(
-                    child: Image.asset('images/logo.png'),
+                    child: Image.asset(
+                      'images/logo.png',
+                    ),
                     height: 50,
                   ),
                 ),
-                const Text(
-                  ' vadSanvad',
-                  style: TextStyle(
-                    fontSize: 45.0,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
+                getText(),
               ],
             ),
             const SizedBox(
               height: 48.0,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
+            RoundedButton(
+                text: 'Login',
                 color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, LoginScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: const Text(
-                    'Log In',
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
+                onpressed: () {
+                  Navigator.pushNamed(context, LoginScreen.id);
+                }),
+            RoundedButton(
+                text: 'Register',
                 color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, RegistrationScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: const Text(
-                    'Register',
-                  ),
-                ),
-              ),
-            ),
+                onpressed: () {
+                  Navigator.pushNamed(context, RegistrationScreen.id);
+                }),
           ],
         ),
       ),
     );
   }
+}
+
+SizedBox getText() {
+  const colorizeColors = [
+    Colors.purple,
+    Colors.blue,
+    Colors.yellow,
+    Colors.red,
+  ];
+
+  const colorizeTextStyle = TextStyle(
+    fontSize: 50.0,
+    fontFamily: 'Horizon',
+    fontWeight: FontWeight.bold,
+  );
+
+  return SizedBox(
+    width: 300.0,
+    child: AnimatedTextKit(
+      animatedTexts: [
+        ColorizeAnimatedText(
+          ' vadSanvad',
+          textStyle: colorizeTextStyle,
+          colors: colorizeColors,
+        ),
+      ],
+      isRepeatingAnimation: true,
+      onTap: () {},
+    ),
+  );
 }

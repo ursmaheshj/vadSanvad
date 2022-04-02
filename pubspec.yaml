@@ -38,6 +38,7 @@ dependencies:
   firebase_core: ^1.14.0
   cloud_firestore: ^3.1.11
   firebase_auth: ^3.3.12
+  loading_overlay: ^0.3.0
 
 dev_dependencies:
   flutter_test:

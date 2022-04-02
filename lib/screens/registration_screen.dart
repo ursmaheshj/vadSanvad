@@ -80,11 +80,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       final newUSer =
                           await _auth.createUserWithEmailAndPassword(
                               email: email!, password: password!);
+                      // ignore: unnecessary_null_comparison
                       if (newUSer != null) {
                         Navigator.pushNamed(context, ChatScreen.id);
                       }
                     } catch (e) {
-                      print(e);
+                      e.toString();
                     }
                     setState(() {
                       showSpinner = false;
